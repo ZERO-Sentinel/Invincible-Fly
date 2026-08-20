@@ -1,0 +1,549 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderSizePixel = 2
+Frame.Position = UDim2.new(0.341826946, 0, 0.367763907, 0)
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.Position = UDim2.fromScale(0.5, 0.5)
+Frame.Size = UDim2.new(0.078, 0, 0.21, 0)
+
+local FrameConstraint = Instance.new("UISizeConstraint")
+FrameConstraint.MinSize = Vector2.new(80, 109)
+FrameConstraint.Parent = Frame
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.BorderSizePixel = 2
+TextButton.Position = UDim2.new(0.08355, 0, 0.533, 0)
+TextButton.Size = UDim2.new(0.838, 0, 0.182, 0)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "OFF"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextWrapped = true
+
+local TextButtonConstraint = Instance.new("UITextSizeConstraint")
+TextButtonConstraint.MaxTextSize = 41
+TextButtonConstraint.MinTextSize = 20
+TextButtonConstraint.Parent = TextButton
+
+local SpeedLabel = Instance.new("TextBox")
+SpeedLabel.Name = "SpeedLabel"
+SpeedLabel.Parent = Frame
+SpeedLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+SpeedLabel.BorderColor3 = Color3.fromRGB(255, 255, 255)
+SpeedLabel.BorderSizePixel = 2
+SpeedLabel.Position = UDim2.new(0.08355, 0, 0.3, 0)
+SpeedLabel.Size = UDim2.new(0.838, 0, 0.182, 0)
+SpeedLabel.Font = Enum.Font.SourceSans
+SpeedLabel.Text = "Speed: 50"
+SpeedLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedLabel.TextScaled = true
+SpeedLabel.TextWrapped = true
+SpeedLabel.TextXAlignment = Enum.TextXAlignment.Center
+SpeedLabel.ClearTextOnFocus = false
+
+local SpeedConstraint = Instance.new("UITextSizeConstraint")
+SpeedConstraint.MaxTextSize = 24
+SpeedConstraint.MinTextSize = 11
+SpeedConstraint.Parent = SpeedLabel
+
+local UnloadButton = Instance.new("TextButton")
+UnloadButton.Name = "UnloadButton"
+UnloadButton.Parent = Frame
+UnloadButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+UnloadButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+UnloadButton.BorderSizePixel = 2
+UnloadButton.Position = UDim2.new(0.08355, 0, 0.766, 0)
+UnloadButton.Size = UDim2.new(0.838, 0, 0.182, 0)
+UnloadButton.Font = Enum.Font.SourceSans
+UnloadButton.Text = "Unload"
+UnloadButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+UnloadButton.TextScaled = true
+UnloadButton.TextWrapped = true
+
+local UnloadConstraint = Instance.new("UITextSizeConstraint")
+UnloadConstraint.MaxTextSize = 35
+UnloadConstraint.MinTextSize = 20
+UnloadConstraint.Parent = UnloadButton
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.06497, 0, 0.07277, 0)
+TextLabel.Size = UDim2.new(0.865, 0, 0.192, 0)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Invincible Fly"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextWrapped = true
+
+local TextLabelConstraint = Instance.new("UITextSizeConstraint")
+TextLabelConstraint.MaxTextSize = 34
+TextLabelConstraint.MinTextSize = 20
+TextLabelConstraint.Parent = TextLabel
+
+local UpButton = Instance.new("TextButton")
+UpButton.Name = "UpButton"
+UpButton.Parent = Frame
+UpButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+UpButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+UpButton.BorderSizePixel = 2
+UpButton.Position = UDim2.new(1.08, 0, 0.05, 0)
+UpButton.Size = UDim2.new(0.4, 0, 0.4, 0)
+UpButton.Font = Enum.Font.SourceSans
+UpButton.Text = "↑"
+UpButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+UpButton.TextScaled = true
+UpButton.TextWrapped = true
+UpButton.Visible = false
+
+local UpConstraint = Instance.new("UITextSizeConstraint")
+UpConstraint.MaxTextSize = 35
+UpConstraint.MinTextSize = 20
+UpConstraint.Parent = UpButton
+
+local DownButton = Instance.new("TextButton")
+DownButton.Name = "DownButton"
+DownButton.Parent = Frame
+DownButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+DownButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+DownButton.BorderSizePixel = 2
+DownButton.Position = UDim2.new(1.08, 0, 0.55, 0)
+DownButton.Size = UDim2.new(0.4, 0, 0.4, 0)
+DownButton.Font = Enum.Font.SourceSans
+DownButton.Text = "↓"
+DownButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+DownButton.TextScaled = true
+DownButton.TextWrapped = true
+DownButton.Visible = false
+
+local DownConstraint = Instance.new("UITextSizeConstraint")
+DownConstraint.MaxTextSize = 35
+DownConstraint.MinTextSize = 20
+DownConstraint.Parent = DownButton
+
+-- Scripts:
+
+local function CTIKC_fake_script()
+
+	local script = Instance.new('LocalScript', TextButton)
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local RunService = game:GetService("RunService")
+    local Players = game:GetService("Players")
+    local UserInputService = game:GetService("UserInputService")
+    local LocalPlayer = Players.LocalPlayer
+    local toggleButton = script.Parent
+    local frame = toggleButton.Parent
+    local UpButton = frame:WaitForChild("UpButton")
+    local DownButton = frame:WaitForChild("DownButton")
+    local unloadButton = frame:FindFirstChild("UnloadButton")
+    local screenGui = frame.Parent
+    local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local HRP = character:WaitForChild("HumanoidRootPart")
+    local Camera = workspace.CurrentCamera
+    local IsMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
+    local ControlModule
+	local fly = false
+    local flySpeed = 50
+    local speed = 50
+    local bv, bg
+    local Flyconnection
+    local Keys = {}
+    local UpPressed = false
+    local DownPressed = false
+    local inputFlags = {
+        forward = false,
+        back = false,
+        left = false,
+        right = false,
+        up = false,
+        down = false
+    }
+local forwardHold = 0
+
+    local function newAnim(id)
+        local anim = Instance.new("Animation")
+        anim.AnimationId = "rbxassetid://" .. id
+        return anim
+    end
+
+    local animations = {
+        forward = newAnim(90872539),
+        up = newAnim(90872539),
+        right1 = newAnim(136801964),
+        right2 = newAnim(142495255),
+        left1 = newAnim(136801964),
+        left2 = newAnim(142495255),
+        flyLow1 = newAnim(97169019),
+        flyLow2 = newAnim(282574440),
+        flyFast = newAnim(282574440),
+        back1 = newAnim(136801964),
+        back2 = newAnim(106772613),
+        back3 = newAnim(42070810),
+        back4 = newAnim(214744412),
+        down = newAnim(233322916),
+        idle1 = newAnim(97171309)
+    }
+
+    local tracks = {}
+    for name, anim in pairs(animations) do
+        tracks[name] = humanoid:LoadAnimation(anim)
+    end
+
+    local function stopAll()
+        for _, track in pairs(tracks) do
+            if track.IsPlaying then
+                track:Stop(0.15)
+            end
+        end
+    end
+
+    UpButton.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch
+            or input.UserInputType == Enum.UserInputType.MouseButton1 then
+            UpPressed = true
+        end
+    end)
+
+    UpButton.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch
+            or input.UserInputType == Enum.UserInputType.MouseButton1 then
+            UpPressed = false
+        end
+    end)
+
+    DownButton.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch
+            or input.UserInputType == Enum.UserInputType.MouseButton1 then
+            DownPressed = true
+        end
+    end)
+
+    DownButton.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch
+            or input.UserInputType == Enum.UserInputType.MouseButton1 then
+            DownPressed = false
+        end
+    end)
+
+    if IsMobile then
+        local PlayerModule = LocalPlayer.PlayerScripts:WaitForChild("PlayerModule")
+        ControlModule = require(PlayerModule:WaitForChild("ControlModule"))
+        UpButton.Visible = true
+        DownButton.Visible = true
+        task.spawn(function()
+            local TouchGui = LocalPlayer.PlayerGui:WaitForChild("TouchGui", 10)
+            if not TouchGui then return end
+            local TouchControlFrame = TouchGui:WaitForChild("TouchControlFrame", 10)
+            if not TouchControlFrame then return end
+            local JumpButton = TouchControlFrame:WaitForChild("JumpButton", 10)
+            if not JumpButton then return end
+            JumpButton.InputBegan:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.Touch then
+                    Keys.MobileUp = true
+                end
+            end)
+            JumpButton.InputEnded:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.Touch then
+                    Keys.MobileUp = false
+                end
+            end)
+        end)
+    end
+
+    local function ApplyFly()
+        if fly then
+            flySpeed = speed
+            if Flyconnection then
+                Flyconnection:Disconnect()
+                Flyconnection=nil
+            end
+            if bv then
+                bv:Destroy()
+                bv = nil
+            end
+            if bg then
+                bg:Destroy()
+                bg = nil
+            end
+            bv = Instance.new("BodyVelocity")
+            bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+            bv.Parent = HRP
+            bg = Instance.new("BodyGyro")
+            bg.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+            bg.P = 50000
+            bg.Parent = HRP
+            Flyconnection = RunService.RenderStepped:Connect(function(dt)
+            local cam = workspace.CurrentCamera
+            bg.CFrame = cam.CFrame
+            if IsMobile and ControlModule then
+                local moveVector = ControlModule:GetMoveVector()
+                inputFlags.forward = moveVector.Z < -0.1
+                inputFlags.back = moveVector.Z > 0.1
+                inputFlags.left = moveVector.X < -0.1
+                inputFlags.right = moveVector.X > 0.1
+                inputFlags.up = Keys.MobileUp or UpPressed
+                inputFlags.down = DownPressed
+            end
+            local direction = Vector3.zero
+            if inputFlags.forward then
+                direction += cam.CFrame.LookVector
+            end
+            if inputFlags.back then
+                direction -= cam.CFrame.LookVector
+            end
+            if inputFlags.left then
+                direction -= cam.CFrame.RightVector
+            end
+            if inputFlags.right then
+                direction += cam.CFrame.RightVector
+            end
+            if inputFlags.up then
+                direction += Vector3.new(0, 1, 0)
+            end
+            if inputFlags.down then
+                direction -= Vector3.new(0, 1, 0)
+            end
+            if direction.Magnitude > 0 then
+                direction = direction.Unit
+            end
+            bv.Velocity = direction * flySpeed
+            if not inputFlags.forward then
+                forwardHold = 0
+            end
+            if inputFlags.up then
+                if not tracks.up.IsPlaying then
+                    stopAll()
+                    tracks.up:Play()
+                end
+            elseif inputFlags.down then
+                if not tracks.down.IsPlaying then
+                    stopAll()
+                    tracks.down:Play()
+                end
+            elseif inputFlags.left then
+                if not tracks.left1.IsPlaying then
+                    stopAll()
+                    tracks.left1:Play()
+                    tracks.left1.TimePosition = 2.0
+                    tracks.left1:AdjustSpeed(0)
+                    tracks.left2:Play()
+                    tracks.left2.TimePosition = 0.5
+                    tracks.left2:AdjustSpeed(0)
+                end
+            elseif inputFlags.right then
+                if not tracks.right1.IsPlaying then
+                    stopAll()
+                    tracks.right1:Play()
+                    tracks.right1.TimePosition = 1.1
+                    tracks.right1:AdjustSpeed(0)
+                    tracks.right2:Play()
+                    tracks.right2.TimePosition = 0.5
+                    tracks.right2:AdjustSpeed(0)
+                end
+            elseif inputFlags.back then
+                if not tracks.back1.IsPlaying then
+                    stopAll()
+                    tracks.back1:Play()
+                    tracks.back1.TimePosition = 5.3
+                    tracks.back1:AdjustSpeed(0)
+                    tracks.back2:Play()
+                    tracks.back3:Play()
+                    tracks.back3.TimePosition = 0.8
+                    tracks.back3:AdjustSpeed(0)
+                    tracks.back4:Play()
+                    tracks.back4.TimePosition = 1
+                    tracks.back4:AdjustSpeed(0)
+                end
+            elseif inputFlags.forward then
+                forwardHold += dt
+                if forwardHold >= 3 then
+                    if not tracks.flyFast.IsPlaying then
+                        stopAll()
+                        flySpeed = speed * 1.3
+                        tracks.flyFast:Play()
+                        tracks.flyFast:AdjustSpeed(0.05)
+                    end
+                else
+                    if not tracks.flyLow1.IsPlaying then
+                        stopAll()
+                        flySpeed = speed
+                        tracks.flyLow1:Play()
+                        tracks.flyLow2:Play()
+                    end
+                end
+            else
+                if not tracks.idle1.IsPlaying then
+                    stopAll()
+                    tracks.idle1:Play()
+                    tracks.idle1:AdjustSpeed(0)
+                end
+            end
+        end)
+        else
+            stopAll()
+            if Flyconnection then
+                Flyconnection:Disconnect()
+                Flyconnection=nil
+            end
+            if bv then
+                bv:Destroy()
+                bv=nil
+            end
+            if bg then 
+                bg:Destroy()
+                bg=nil
+            end
+        end
+    end
+
+    SpeedLabel.Focused:Connect(function()
+        SpeedLabel.Text = tostring(speed)
+        SpeedLabel.SelectionStart = 1
+        SpeedLabel.CursorPosition = #SpeedLabel.Text + 1
+    end)
+
+    SpeedLabel.FocusLost:Connect(function()
+        local value = tonumber(SpeedLabel.Text)
+        if value then
+            speed = math.clamp(value, 1, 10000)
+        end
+        SpeedLabel.Text = "Speed: " .. speed
+        if fly then
+            ApplyFly()
+        end
+    end)
+
+	if not ReplicatedStorage:FindFirstChild("juisdfj0i32i0eidsuf0iok") then
+		local detection = Instance.new("Decal")
+		detection.Name = "juisdfj0i32i0eidsuf0iok"
+		detection.Parent = ReplicatedStorage
+	end
+	
+	toggleButton.MouseButton1Click:Connect(function()
+		fly = not fly
+		if fly then
+			toggleButton.Text = "ON"
+		else
+			toggleButton.Text = "OFF"
+		end
+        ApplyFly()
+	end)
+
+	if unloadButton then
+		unloadButton.MouseButton1Click:Connect(function()
+            stopAll()
+            if Flyconnection then
+                Flyconnection:Disconnect()
+                Flyconnection=nil
+            end
+            if bv then
+                bv:Destroy()
+                bv=nil
+            end
+            if bg then 
+                bg:Destroy()
+                bg=nil
+            end
+            fly = false
+			toggleButton.Text = "OFF"
+			if screenGui and screenGui.Parent then
+				screenGui:Destroy()
+			end
+		end)
+	end
+	
+    UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed then
+            return
+        end
+
+        Keys[input.KeyCode] = true
+
+        if input.KeyCode == Enum.KeyCode.W then
+            inputFlags.forward = true
+        elseif input.KeyCode == Enum.KeyCode.S then
+            inputFlags.back = true
+        elseif input.KeyCode == Enum.KeyCode.A then
+            inputFlags.left = true
+        elseif input.KeyCode == Enum.KeyCode.D then
+            inputFlags.right = true
+        elseif input.KeyCode == Enum.KeyCode.E then
+            inputFlags.up = true
+        elseif input.KeyCode == Enum.KeyCode.Q then
+            inputFlags.down = true
+        end
+    end)
+
+    UserInputService.InputEnded:Connect(function(input)
+        Keys[input.KeyCode] = nil
+
+        if input.KeyCode == Enum.KeyCode.W then
+            inputFlags.forward = false
+        elseif input.KeyCode == Enum.KeyCode.S then
+            inputFlags.back = false
+        elseif input.KeyCode == Enum.KeyCode.A then
+            inputFlags.left = false
+        elseif input.KeyCode == Enum.KeyCode.D then
+            inputFlags.right = false
+        elseif input.KeyCode == Enum.KeyCode.E then
+            inputFlags.up = false
+        elseif input.KeyCode == Enum.KeyCode.Q then
+            inputFlags.down = false
+        end
+    end)
+    LocalPlayer.CharacterRemoving:Connect(function()
+        stopAll()
+        if Flyconnection then
+            Flyconnection:Disconnect()
+            Flyconnection = nil
+        end
+        if bv then
+            bv:Destroy()
+            bv = nil
+        end
+        if bg then
+            bg:Destroy()
+            bg = nil
+        end
+    end)
+    LocalPlayer.CharacterAdded:Connect(function(newCharacter)
+        character = newCharacter
+        HRP = character:WaitForChild("HumanoidRootPart")
+        humanoid = character:WaitForChild("Humanoid")
+        stopAll()
+        for _, track in pairs(tracks) do
+            track:Destroy()
+        end
+        tracks = {}
+        for name, anim in pairs(animations) do
+            tracks[name] = humanoid:LoadAnimation(anim)
+        end
+        if fly then
+            ApplyFly()
+        end
+    end)
+end
+coroutine.wrap(CTIKC_fake_script)()
+local function FFJFK_fake_script()
+	local script = Instance.new('LocalScript', Frame)
+	script.Parent.Active = true
+	script.Parent.Draggable = true
+end
+coroutine.wrap(FFJFK_fake_script)()
