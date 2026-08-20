@@ -94,7 +94,7 @@ TextLabel.TextWrapped = true
 
 local TextLabelConstraint = Instance.new("UITextSizeConstraint")
 TextLabelConstraint.MaxTextSize = 34
-TextLabelConstraint.MinTextSize = 20
+TextLabelConstraint.MinTextSize = 10
 TextLabelConstraint.Parent = TextLabel
 
 local UpButton = Instance.new("TextButton")
